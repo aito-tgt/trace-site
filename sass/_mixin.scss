@@ -1,0 +1,65 @@
+//color
+$txt:#293233;
+$bg:#ECF0F3;
+$border:#C3CCD5;
+$accent:#2DBAF7;
+
+//他
+$basefontsize : 16;
+
+
+// ブレイクポイントを指定
+$pc: 1440px;
+$tab: 1024px;
+$sp: 768px;
+
+//SP時左右の余白
+$spmargin : 16px;
+
+
+@mixin pc {
+  @media screen and (max-width: ($pc)) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media screen and (max-width: ($tab)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+
+//％計算用
+	
+// margin
+@mixin margin($t, $r, $b, $l,$parent_width) {
+  margin:($t / $parent_width) * 100% ($r / $parent_width) * 100% ($b / $parent_width) * 100% ($l / $parent_width) * 100%;
+  }
+  // width
+  @mixin width($w,$parent_width) {
+  width:($w / $parent_width) * 100%;
+  }
+  // gap
+  @mixin gap($r,$c,$parent_width) {
+    $r : $r + px ; 
+    $c : calc($c / $parent_width) * 100% ;
+    gap : $r $c;
+    }
+   
+
+// フォントサイズ
+@mixin fz($size) {
+  font-size : $size + px ;
+  font-size : calc($size / $basefontsize) + rem ;
+}
+
+// line-height
+@mixin lh($fontsize,$lineheight) {
+  line-height: calc($lineheight / $fontsize) ;
+}
